@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ravenmoor Times Tables</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Nunito:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=VT323&family=Nunito:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 /* VOICE: a storybook quest, warm and magical, never babyish; for an 11 year old.
    IDEA: a wizard school's enchanted quest map and spellbook, lit by candlelight.
@@ -121,17 +121,42 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}.bd{background:var(--bg2);border-radius:12px;padding:10px;text-align:center;display:grid;justify-items:center;gap:2px;box-shadow:inset 0 0 0 2px var(--line)}.bd small{color:var(--mut);font-size:13px}.bd.off{opacity:.6}
 .cert svg{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
 .sel{font:inherit;font-size:16px;padding:10px;border-radius:10px;border:2px solid #c9b27a;background:#fffaf0;color:var(--pink);width:100%}
-input[type=password]{font:inherit;font-size:22px;letter-spacing:8px;padding:12px;border-radius:10px;border:2px solid #c9b27a;background:#fffaf0;width:100%}
+input[type=password]{font:inherit;font-size:22px;letter-spacing:8px;padding:12px;border-radius:10px;border:2px solid #c9b27a;background:#fffaf0;color:#2a1a10;caret-color:#2a1a10;width:100%}
+input[type=text],input[type=date],.sel{caret-color:#2a1a10}
 .reward{background:#fff3d1;border-radius:12px;padding:12px 14px;margin:10px 0;box-shadow:inset 0 0 0 2px var(--gold)}
+/* NIGHT SHIFT theme */
+.nsky{display:none}body.night .wsky{display:none}body.night .nsky{display:block}
+body.night{--bg:#0e0d12;--bg2:#1b1a22;--line:#34323f;--gold:#ffb627;--mut:#a9a6b6;background:radial-gradient(900px 500px at 50% -10%,#2a1218,transparent 70%),var(--bg)}
+body.night h1,body.night h2,body.night .year{font-family:Cinzel,Georgia,serif}
+.nightcard{background:#e9e3d6}.nightcard .note{font-family:Georgia,serif;font-style:italic;background:#fffdf4;padding:12px 14px;border-radius:6px;box-shadow:inset 0 0 0 1px #d8cfb8;transform:rotate(-.6deg)}
+.nightbar{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:900}.clock{font-family:VT323,monospace;font-size:34px;line-height:1;color:#b5303a}
+.pw.low{color:#b5303a}.pbar{height:8px;border-radius:9px;background:#d8cfb8;overflow:hidden;margin:4px 0 8px}.pbar i{display:block;height:100%;background:#3c9a5a;transition:width .9s linear}
+.office{display:block;width:100%;height:auto;border-radius:10px}.office.flick{animation:flick 1.6s infinite}@keyframes flick{0%,100%{opacity:1}47%{opacity:1}50%{opacity:.55}53%{opacity:1}}
+.cams{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:8px}
+.cam{position:relative;background:#14141a repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 2px,transparent 2px 4px);color:#cfd3d8;border-radius:8px;padding:18px 4px 4px;text-align:center;min-height:96px;display:grid;justify-items:center;align-content:end;box-shadow:inset 0 0 0 2px #2c2b36}
+.cam .lbl{position:absolute;top:3px;left:5px;right:5px;font:13px/1.1 VT323,monospace;text-align:left;color:#8fe39f}.cam small{font-size:12px}
+.cam.warn{box-shadow:inset 0 0 0 2px #ffb627}.cam.red{box-shadow:inset 0 0 0 3px #ff4757}.cam.red .lbl{color:#ff8a94}
+.alarm{background:#2a0d12;color:#ffd9dd;border-radius:10px;padding:10px 12px;margin-top:10px;box-shadow:inset 0 0 0 2px #ff4757}.alarm .candle{background:#5a1f2a}
+.six{font:clamp(64px,18vw,110px)/1 VT323,monospace;text-align:center;color:#b5303a}
+#scare{position:fixed;inset:0;z-index:20;display:none;place-items:center;pointer-events:none}
+#scare.on{display:grid}#scare.lvl1{background:rgba(0,0,0,.55)}#scare.lvl1 .sc-in{animation:pin .45s ease-out both}
+#scare.lvl2{background:#000;animation:redf .2s 3}#scare.lvl2 .sc-in{animation:lunge .25s ease-in both,shk .08s .25s 10}
+#scare svg{width:min(80vw,420px);height:auto}#scare.lvl2 svg{width:min(120vw,700px)}
+@keyframes pin{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}@keyframes lunge{from{transform:scale(.15)}to{transform:scale(1.15)}}
+@keyframes shk{50%{transform:scale(1.15) translate(6px,-4px)}}@keyframes redf{50%{background:#3a0008}}
+.seg{display:inline-flex;border-radius:12px;box-shadow:inset 0 0 0 2px var(--line);padding:3px;gap:3px;margin:0 0 10px}.seg button{min-height:40px;padding:6px 14px;box-shadow:none;background:transparent;color:var(--ink)}.seg button.on{background:var(--gold);color:#2a1a10}
 .pop{animation:pop .45s ease}@keyframes pop{0%{transform:scale(.8);opacity:.3}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
-@media(prefers-reduced-motion:reduce){.rider,#toast{transition:none}.pop,.burst g,.cf,.hit,.hop{animation:none}.burst{display:none}.bar i{transition:none}}
+.frt{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:18px}.frt td{padding:6px 8px;border-bottom:1px solid #e0cfa3}.frt td:last-child{font-size:14px;color:#7a6440}.frt em{font-style:normal;color:#b5303a;font-weight:900}
+.frq{font:900 clamp(24px,6.5vw,36px)/1.3 Nunito,sans-serif;text-align:center;margin:10px 0 4px}.frh{text-align:center;color:#7a6440;font-weight:700;margin:0 0 12px}
+.frin{font-size:26px!important;text-align:center;max-width:340px;display:block;margin:0 auto 12px}.opts4.fr button{font-size:20px}
+@media(prefers-reduced-motion:reduce){#scare .sc-in,#scare.lvl2,.office.flick{animation:none!important}.rider,#toast{transition:none}.pop,.burst g,.cf,.hit,.hop{animation:none}.burst{display:none}.bar i{transition:none}}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.houses{grid-template-columns:minmax(0,1fr)}.arena{grid-template-columns:64px minmax(0,1fr) 80px}.arena>svg:last-child{width:80px;height:80px}.build{grid-template-columns:minmax(0,1fr)}.player{grid-template-columns:72px minmax(0,1fr)}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="sky" aria-hidden="true">
-    <svg viewBox="0 0 720 210" preserveAspectRatio="xMidYMax slice">
+    <svg class="wsky" viewBox="0 0 720 210" preserveAspectRatio="xMidYMax slice">
       <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1d4d"/><stop offset="1" stop-color="#1c1230"/></linearGradient>
       <g id="st"><circle r="1.4" fill="#fff"/></g></defs>
       <rect width="720" height="210" fill="url(#g)"/>
@@ -148,7 +173,13 @@ input[type=password]{font:inherit;font-size:22px;letter-spacing:8px;padding:12px
       </g>
       <g fill="#f2c14e"><rect x="355" y="90" width="10" height="16" rx="5"/><rect x="242" y="100" width="8" height="12" rx="4"/><rect x="470" y="96" width="8" height="12" rx="4"/><rect x="298" y="130" width="8" height="12" rx="4"/><rect x="415" y="128" width="8" height="12" rx="4"/><rect x="330" y="160" width="8" height="12" rx="4"/><rect x="380" y="150" width="8" height="12" rx="4"/></g>
     </svg>
+    <svg class="nsky" viewBox="0 0 720 210" preserveAspectRatio="xMidYMax slice"><rect width="720" height="210" fill="#100f15"/><circle cx="600" cy="54" r="24" fill="#cfcabb" opacity=".8"/>
+      <rect y="186" width="720" height="24" fill="#08080b"/><path d="M180 186V96h360v90z" fill="#0b0b0f"/><path d="M170 100l190-34 190 34z" fill="#0b0b0f"/>
+      <rect x="236" y="120" width="44" height="34" fill="#1a1a22"/><rect x="300" y="120" width="44" height="34" fill="#1a1a22"/><rect x="440" y="120" width="44" height="34" fill="#f2c14e" opacity=".55"/><rect x="376" y="138" width="40" height="48" fill="#1a1a22"/>
+      <text x="360" y="92" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-weight="800" font-size="22" fill="none" stroke="#ff4757" stroke-width="1.2">PIP'S PIZZA PALACE</text>
+      <path d="M80 186V90" stroke="#1a1a22" stroke-width="4"/><path d="M80 92h20" stroke="#1a1a22" stroke-width="4"/><path d="M84 96l12 0 18 60h-48z" fill="#f2e6a8" opacity=".06"/><circle cx="98" cy="96" r="4" fill="#f2e6a8" opacity=".7"/></svg>
   </div>
+  <div id="scare" aria-hidden="true"></div>
   <div id="toast" role="status" aria-live="polite"></div>
   <main id="app"><div class="card"><h2>Opening the castle gates</h2><p>Loading your quest...</p></div></main>
 </div>
@@ -242,13 +273,15 @@ function avatar(av,h,mood,size,cls){av=Object.assign({},AVDEF,av||{});const s=av
  const gl=av.glasses==='round'?`<g fill="none" stroke="#2a1a10" stroke-width="2"><circle cx="41" cy="50" r="7"/><circle cx="59" cy="50" r="7"/><path d="M48 50h4"/></g>`:av.glasses==='square'?`<g fill="none" stroke="#2a1a10" stroke-width="2"><rect x="33" y="44" width="15" height="12" rx="2"/><rect x="52" y="44" width="15" height="12" rx="2"/><path d="M48 50h4"/></g>`:'';
  const fr=av.extra==='freckles'?[[36,57],[39,59],[34,60],[64,57],[61,59],[66,60]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1" fill="#8a4a2a"/>`).join(''):'';
  const scarf=av.extra==='scarf'?`<path d="M32 74h36v9H32z" fill="${h}"/><path d="M38 74v9M50 74v9M62 74v9" stroke="#f2c14e" stroke-width="3"/><path d="M58 80l4 22h-8z" fill="${h}"/>`:'';
- const hatSvg=av.hat==='hat'?`<path d="M22 34Q50 26 78 34L56 -2Q50 -8 46 0z" fill="${h}"/><ellipse cx="50" cy="34" rx="31" ry="6" fill="${h}"/><path d="M30 31Q50 25 70 31" stroke="#f2c14e" stroke-width="3" fill="none"/>`:'';
+ const guard=av.style==='guard';
+ const hatSvg=guard&&av.hat==='hat'?`<path d="M24 36Q24 14 50 14Q76 14 76 36z" fill="#1b2638"/><path d="M50 33h32q3 5-5 7H50z" fill="#121a28"/><path d="M22 33h56v4H22z" fill="#121a28"/><path d="M45 18l5-3 5 3v8h-10z" fill="#f2c14e"/>`:av.hat==='hat'?`<path d="M22 34Q50 26 78 34L56 -2Q50 -8 46 0z" fill="${h}"/><ellipse cx="50" cy="34" rx="31" ry="6" fill="${h}"/><path d="M30 31Q50 25 70 31" stroke="#f2c14e" stroke-width="3" fill="none"/>`:'';
  const wd=av.wood||'#6b4a2a',wc=av.core||'#f2c14e';
- const wand=happy?`<path d="M74 88L88 52" stroke="${wd}" stroke-width="4" stroke-linecap="round"/><circle cx="74" cy="90" r="6" fill="${s}"/><path d="M89 40l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" fill="${wc}"/><circle cx="96" cy="56" r="2" fill="#fff6c8"/><circle cx="80" cy="42" r="1.6" fill="#fff6c8"/>`
+ const torch=(rot,beam,dim)=>`<g transform="rotate(${rot} 76 92)">${beam?`<path d="M100 89L140 74V110L100 95z" fill="#fff6a8" opacity="${dim?.12:.35}"/>`:''}<rect x="76" y="88" width="22" height="8" rx="2" fill="#3a3f48"/><rect x="96" y="86" width="5" height="12" rx="1" fill="#6b717c"/><rect x="99" y="88" width="2" height="8" fill="${dim?'#8a8060':'#fff6a8'}"/></g><circle cx="76" cy="92" r="6" fill="${s}"/>`;
+ const wand=guard?(happy?torch(-60,1):sad?torch(65,1,1):torch(-15,0)):happy?`<path d="M74 88L88 52" stroke="${wd}" stroke-width="4" stroke-linecap="round"/><circle cx="74" cy="90" r="6" fill="${s}"/><path d="M89 40l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" fill="${wc}"/><circle cx="96" cy="56" r="2" fill="#fff6c8"/><circle cx="80" cy="42" r="1.6" fill="#fff6c8"/>`
   :sad?`<path d="M76 104L90 116" stroke="${wd}" stroke-width="4" stroke-linecap="round"/><circle cx="76" cy="104" r="6" fill="${s}"/>`
   :`<path d="M76 100L92 82" stroke="${wd}" stroke-width="4" stroke-linecap="round"/><circle cx="76" cy="100" r="6" fill="${s}"/><circle cx="93" cy="81" r="2.4" fill="${wc}"/>`;
  const extras=(happy?`<ellipse cx="34" cy="58" rx="5" ry="3" fill="#ff8a9a" opacity=".55"/><ellipse cx="66" cy="58" rx="5" ry="3" fill="#ff8a9a" opacity=".55"/>`:'')+(sad?`<path d="M74 34q4 7 0 9q-4-2 0-9z" fill="#9fd0ff"/>`:'');
- return `<svg class="av ${cls||''}" width="${size}" height="${size*1.2}" viewBox="-4 -10 108 132" aria-hidden="true">${back}<path d="M18 122Q20 78 50 74Q80 78 82 122z" fill="${av.robe==='stars'?'#140c24':av.robe||'#2a1c46'}"/>${av.robe==='stars'?'<g fill="#f2c14e"><circle cx="30" cy="104" r="1.5"/><circle cx="40" cy="92" r="1.2"/><circle cx="66" cy="96" r="1.5"/><circle cx="72" cy="112" r="1.2"/><circle cx="36" cy="116" r="1.2"/><circle cx="60" cy="110" r="1.5"/></g>':''}<path d="M42 75L50 100L58 75z" fill="${h}"/><path d="M18 122Q20 78 50 74Q80 78 82 122" stroke="${h}" stroke-width="3" fill="none"/><rect x="44" y="64" width="12" height="12" fill="${s}"/><circle cx="25" cy="50" r="5" fill="${s}"/><circle cx="75" cy="50" r="5" fill="${s}"/><circle cx="50" cy="48" r="25" fill="${s}"/>${top}${brows}${eyes}${gl}${fr}${mouth}${extras}${scarf}${hatSvg}${wand}</svg>`}
+ return `<svg class="av ${cls||''}" width="${size}" height="${size*1.2}" viewBox="-4 -10 108 132" aria-hidden="true">${back}<path d="M18 122Q20 78 50 74Q80 78 82 122z" fill="${guard?'#24324a':av.robe==='stars'?'#140c24':av.robe||'#2a1c46'}"/>${av.robe==='stars'?'<g fill="#f2c14e"><circle cx="30" cy="104" r="1.5"/><circle cx="40" cy="92" r="1.2"/><circle cx="66" cy="96" r="1.5"/><circle cx="72" cy="112" r="1.2"/><circle cx="36" cy="116" r="1.2"/><circle cx="60" cy="110" r="1.5"/></g>':''}${guard?`<path d="M42 75L50 88L58 75z" fill="#8fb0d8"/><path d="M50 88v34" stroke="#1b2638" stroke-width="2"/><path d="M30 92l6-3 6 3v6q-6 5-12 0z" fill="#f2c14e"/><rect x="56" y="94" width="14" height="10" rx="1" fill="none" stroke="#1b2638" stroke-width="1.5"/>`:`<path d="M42 75L50 100L58 75z" fill="${h}"/><path d="M18 122Q20 78 50 74Q80 78 82 122" stroke="${h}" stroke-width="3" fill="none"/>`}<rect x="44" y="64" width="12" height="12" fill="${s}"/><circle cx="25" cy="50" r="5" fill="${s}"/><circle cx="75" cy="50" r="5" fill="${s}"/><circle cx="50" cy="48" r="25" fill="${s}"/>${top}${brows}${eyes}${gl}${fr}${mouth}${extras}${scarf}${hatSvg}${wand}</svg>`}
 
 const DAY=864e5,INT=[0,0,1,3,7,21];
 const dkey=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
@@ -312,7 +345,7 @@ function drawCard(p,min){const left=CARDS.map((c,i)=>i).filter(i=>!p.cards.inclu
 let AC=null;
 function sfx(n){const p=P();if(!p||!p.snd)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();
  const S={ok:[[660,0,.12],[880,.08,.12],[1320,.16,.22]],bad:[[392,0,.2,'triangle'],[294,.16,.32,'triangle']],hit:[[200,0,.18,'sawtooth',.05],[140,.08,.22,'sawtooth',.05]],
-  win:[[523,0,.16],[659,.15,.16],[784,.3,.16],[1047,.45,.5]],card:[[1175,0,.09],[1568,.07,.09],[2093,.14,.3]],buy:[[988,0,.1],[1319,.09,.28]]}[n];
+  win:[[523,0,.16],[659,.15,.16],[784,.3,.16],[1047,.45,.5]],card:[[1175,0,.09],[1568,.07,.09],[2093,.14,.3]],buy:[[988,0,.1],[1319,.09,.28]],slam:[[90,0,.3,'square',.18],[60,.02,.3,'sine',.25]],step:[[70,0,.14,'sine',.3],[62,.32,.14,'sine',.3]],chime:[[784,0,.5],[988,.4,.5],[1175,.8,1]]}[n];
  const t0=AC.currentTime;S.forEach(([f,s,d,type,v])=>{const o=AC.createOscillator(),g=AC.createGain();o.type=type||'sine';o.frequency.value=f;g.gain.setValueAtTime(0,t0+s);g.gain.linearRampToValueAtTime(v||.12,t0+s+.02);g.gain.exponentialRampToValueAtTime(.0001,t0+s+d);o.connect(g);g.connect(AC.destination);o.start(t0+s);o.stop(t0+s+d+.05)})}catch(e){}}
 
 let TTS=null,ttsOff=false,reading=false;
@@ -348,7 +381,13 @@ function vReport(){const p=P(),ds=[];for(let i=6;i>=0;i--){const d=new Date(Date
  <h3 style="margin-top:18px">Each table</h3><p class="muted" style="color:#7a6440;margin-top:0">Gold: facts known. Green: facts strong (answered fast many times). ${known} of 78 different facts known overall; ${p.done.length} of ${CH.length} chapters done.</p>${rows}
  <h3 style="margin-top:18px">Needs more practice</h3>${top.length?`<ul class="list plain">${top.map(([k,n])=>`<li><span>${nm(k)} = ${k.split('x').reduce((a,b)=>a*b)}</span><span>missed ${n} time${n>1?'s':''} this week</span></li>`).join('')}</ul>`:'<p>No misses this week.</p>'}
  <h3 style="margin-top:18px">Learned this week</h3><p>${learned.length?learned.map(nm).join(', '):'Nothing new yet this week.'}</p>
- <p>${fading?`${fading} fact${fading>1?'s are':' is'} due for a refresh. The game will mix ${fading>1?'them':'it'} in, or use the Refresh button on the map.`:'No facts are due for a refresh right now.'}</p>${rewardsHtml(p)}${manageHtml()}</div>`}
+ <p>${fading?`${fading} fact${fading>1?'s are':' is'} due for a refresh. The game will mix ${fading>1?'them':'it'} in, or use the Refresh button on the map.`:'No facts are due for a refresh right now.'}</p>
+ <h3 style="margin-top:20px">Theme</h3><p class="muted" style="color:#7a6440;margin-top:0">Which adventure ${esc(p.name)} sees on the map. Progress on the times tables is shared, so switching never loses anything.</p>
+ <div class="row"><button class="${p.theme==='night'?'ghost':''}" data-act="theme" data-v="wizard" aria-pressed="${p.theme!=='night'}">Wizard school</button><button class="${p.theme==='night'?'':'ghost'}" data-act="theme" data-v="night" aria-pressed="${p.theme==='night'}">Night shift</button></div>
+ <p class="muted" style="color:#5a4630">${p.theme==='night'?'Night shift: he plays a security guard with a flashlight at Pip\'s Pizza Palace.':'Wizard school: he plays a wizard with a wand at Ravenmoor Academy.'}</p>
+ <h3 style="margin-top:20px">Night shift scare level</h3><p class="muted" style="color:#7a6440;margin-top:0">For ${esc(p.name)}. Controls what happens when an animatronic gets in or the power runs out.</p>
+ <div class="row">${[['Cozy','No pop-ups. The animatronic just wanders in for pizza.'],['Spooky','A quick cartoon pop-up with a short sound.'],['Scary','A full-screen jump scare with a loud screech.']].map(([n,d],i)=>`<button class="${scareOf(p)===i?'':'ghost'}" data-act="scare" data-v="${i}" aria-pressed="${scareOf(p)===i}">${n}</button>`).join('')}</div>
+ <p class="muted" style="color:#5a4630">${[['No pop-ups. The animatronic just wanders in for pizza.'],['A quick cartoon pop-up with a short sound.'],['A full-screen jump scare with a loud screech.']][scareOf(p)]}</p>${frReport(p)}${rewardsHtml(p)}${manageHtml()}</div>`}
 
 // ---------- helpers for duel-aware profile ----------
 const pp=()=>play&&play.duel?norm(state.profiles[play.duel.ids[play.duel.turn]]):P();
@@ -373,7 +412,7 @@ const BADGES=[['first','First spell','Answer your first question right','1'],['s
  ['year3','Third Year done','Defeat the shadow hound','III'],['year4','Grand Wizard','Defeat the Shadow Sorcerer','IV'],['cards10','Card collector','Collect 10 wizard cards','10'],
  ['cardsall','Complete album','Collect all 24 cards','24'],['fresh','Spell keeper','Finish a spell refresh','↻'],['racer','Broom racer','Finish a broom race','R'],
  ['record','Record breaker','Beat your own race record','★'],['family','Family champion','Win a family duel','F'],['shopper','Big spender','Buy something at the market','G'],
- ['grown','Proud keeper','Grow a pet to full size','P'],['all78','Times table wizard','Know all 78 facts','78']];
+ ['grown','Proud keeper','Grow a pet to full size','P'],['all78','Times table wizard','Know all 78 facts','78'],['night1','First shift','Survive Night 1 at Pip\'s','N1'],['night6','Employee of the Month','Survive all 6 nights','N6'],['french','Bilingual wizard','Score 90% or more on a French mock test','FR']];
 let toastQ=[],toasting=false;
 function toast(html){toastQ.push(html);if(!toasting)nextToast()}
 function nextToast(){const el=$('#toast');if(!el||!toastQ.length){toasting=false;return}toasting=true;el.innerHTML=toastQ.shift();el.className='show';setTimeout(()=>{el.className='';setTimeout(nextToast,350)},2600)}
@@ -404,6 +443,7 @@ const QTAG={miss:'Missing ingredient: find the hidden number',tf:'True or false?
 function nextQ(){const p=pp(),c=play.c;play.retry.forEach(x=>x.in--);const k=pickKey(p,c);
  play.q=makeQ(p,c,k);play.last=k;play.n=(play.n||0)+1;play.input='';play.fb=null;play.start=Date.now();play.petMsg=null;
  clearInterval(play.tick);
+ if(c.night){if(!play.ntick)play.ntick=setInterval(nightTick,1000);const at=play.ns.anim.find(a=>a.pos>=4);if(at)armDoor(at,true)}
  if(c.boss||c.duel){play.tmax=c.duel?(p.adult?6:12):15;play.time=play.tmax;play.tick=setInterval(()=>{play.time-=.25;const el=$('.candle i');if(el)el.style.width=Math.max(0,play.time/play.tmax*100)+'%';if(play.time<=0){clearInterval(play.tick);answer(true)}},250)}
  if(c.race&&!play.rtick)play.rtick=setInterval(updRace,100);
  draw()}
@@ -411,20 +451,22 @@ function answer(timeout){const p=pp(),q=play.q,c=play.c;if(play.fb)return;if(!ti
  const ms=Date.now()-play.start,ok=!timeout&&String(play.input)===String(q.ans),f=F(p,q.k),b0=f.b,now=Date.now();f.t=now;play.card=null;let rw=[];
  if(ok){const easy=q.type==='mc'||q.type==='tf';f.c++;f.b=ms<=8000&&(!easy||f.b<2)?Math.min(5,f.b+1):Math.max(f.b,1);f.d=f.b>=2?now+INT[f.b]*DAY:0;
   p.points+=ms<=5000?15:10;p.gems+=ms<=5000?2:1;play.streak++;play.fb={ok:1,msg:c.race?'Zoom!':pickPraise(ms)};
-  if(c.boss)play.hp--;if(c.duel)play.duel.score[play.duel.turn]++;if(c.race)play.race.n++;sfx(c.boss?'hit':'ok');
-  if(!c.boss&&!c.race&&!c.duel&&Math.random()<.07){const id=drawCard(p,0);if(id!=null){play.card=id;setTimeout(()=>sfx('card'),350)}}
+  if(c.boss)play.hp--;if(c.duel)play.duel.score[play.duel.turn]++;if(c.race)play.race.n++;
+  if(c.night){const ns=play.ns;ns.done++;if(q.door){ns.anim.find(a=>a.id===q.door).pos=0;ns.power-=4;play.fb.msg='SLAM! Door shut.';sfx('slam')}else{const far=ns.anim.slice().sort((x,y)=>y.pos-x.pos)[0];if(far.pos>0)far.pos--;sfx('ok')}}else sfx(c.boss?'hit':'ok');
+  if(!c.boss&&!c.race&&!c.duel&&!c.night&&Math.random()<.07){const id=drawCard(p,0);if(id!=null){play.card=id;setTimeout(()=>sfx('card'),350)}}
   const pet=p.eq.pet;if(pet){const s0=stageOf(p.petxp[pet]||0);p.petxp[pet]=(p.petxp[pet]||0)+1;const s1=stageOf(p.petxp[pet]);if(s1>s0){play.petMsg=`Your ${item(pet).n.toLowerCase()} grew!`;if(s1===2)award(p,'grown')}}
   award(p,'first');if(play.streak>=10)award(p,'streak10');if(play.streak>=25)award(p,'streak25');if(ms<2000&&(q.type==='std'||q.type==='miss'))award(p,'fast');
   if(f.b>=4&&b0<4){if(tableStrong(p,q.a)||tableStrong(p,q.b))award(p,'master');if((q.a===7||q.b===7)&&tableStrong(p,7))award(p,'seven')}
   if(f.b>=2&&b0<2&&knownCount(p)===78)award(p,'all78')}
  else{f.w++;f.b=Math.max(0,f.b-2);f.d=f.c>0?now:0;play.retry.push({k:q.k,in:2});play.streak=0;
-  play.fb={ok:0,msg:timeout?'The candle burned out!':c.race?'Oops! +3 seconds':'Not quite.'};if(c.boss)play.hearts--;if(c.race)play.race.pen+=3000;sfx('bad')}
+  play.fb={ok:0,msg:timeout?'The candle burned out!':c.race?'Oops! +3 seconds':'Not quite.'};if(c.boss)play.hearts--;if(c.race)play.race.pen+=3000;if(c.night){play.ns.power-=6;if(q.door){logAns(p,q.k,false,ms,b0,f.b);save();return nightLose(q.door)}}sfx('bad')}
  logAns(p,q.k,ok,ms,b0,f.b);save();draw();
  if(c.race)setTimeout(()=>{if(play&&play.fb)after()},ok?300:1500);
  else if(ok&&play.card==null)setTimeout(()=>{if(play&&play.fb&&play.fb.ok&&play.card==null)after()},750)}
 function after(){const p=pp(),c=play.c,i=CH.indexOf(c);play.card=null;
  if(c.refresh&&!c.free.some(k=>isDue(p.facts[k]))){p.gems+=10;award(p,'fresh');save();sfx('win');return go('refreshed')}
  if(c.race&&play.race.n>=20)return raceEnd();
+ if(c.night){if(play.ns.over)return;if(play.ns.power<=0)return nightLose(null);if(play.ns.done>=play.ns.need)return nightWin()}
  if(c.duel){const d=play.duel;d.round++;if(d.round>=d.rounds)return duelEnd();d.turn=1-d.turn;return go('pass')}
  if(c.boss){if(play.hp<=0)return finish(i,true);if(play.hearts<=0)return go('lost')}
  else if(!c.free&&chProg(p,c)>=1)return finish(i,false);
@@ -553,6 +595,7 @@ function vPlay(){const p=pp(),c=play.c,q=play.q,fb=play.fb;
  let top;
  if(c.boss)top=`<div class="arena">${avatar(pav(p),h,mood,84,acls)}<div><b>${esc(c.foe[0].toUpperCase()+c.foe.slice(1))}</b><div class="bar"><i style="width:${play.hp/c.hp*100}%;background:${c.col}"></i></div><div class="hearts" style="margin-top:6px" aria-label="${play.hearts} hearts left">${'♥'.repeat(Math.max(0,play.hearts))}<span style="opacity:.25">${'♥'.repeat(3-Math.max(0,play.hearts))}</span></div>${candle}<span class="muted" style="color:#7a6440">Candle timer</span></div>${boss(CH.indexOf(c),fb&&fb.ok?'hit':'')}</div>`;
  else if(c.duel)top=scoreRow()+candle+bubble;
+ else if(c.night)top=vNightPlay(p,q,fb);
  else if(c.race){const best=norm2(P()).best.race,r=play.race;top=`<div class="race"><div class="lane"><span class="rider" style="left:calc(${r.n/20*100}% - 18px)">${avatar(pav(p),h,mood,34)}</span><span class="flag"></span></div>
   <div class="lane gh">${best?`<span class="rider" id="ghost" style="left:-18px">${avatar(pav(p),h,'idle',34)}</span>`:'<span class="muted" style="padding-left:10px">No ghost yet: set your first record!</span>'}<span class="flag"></span></div>
   <div class="row" style="justify-content:space-between"><b id="rtime">${fmt(Date.now()-r.start+r.pen)}</b><span>${r.n} / 20</span><span class="muted" style="color:#7a6440">${best?'Best '+fmt(best):''}</span></div></div>`}
@@ -567,6 +610,249 @@ function vPlay(){const p=pp(),c=play.c,q=play.q,fb=play.fb;
  return (c.duel?'':header(P()))+`<div class="card">${fb&&fb.ok?burst(sparkCols(p)):''}${top}${QTAG[q.type]?`<p class="qt">${QTAG[q.type]}</p>`:''}<div class="q ${q.type==='miss'||q.type==='tf'?'sm':''}">${qText(q)}</div>
  ${c.boss?`<div class="fb ${fb?(fb.ok?'good':'bad'):''}" aria-live="polite">${fb?esc(fb.msg):play.streak>=3?play.streak+' in a row!':''}</div>`:''}${body}
  <div class="row" style="justify-content:center;margin-top:14px"><button class="ghost" data-act="map">Leave to map</button></div></div>`}
+
+// ---------- NIGHT SHIFT at Pip's Pizza Palace (original theme) ----------
+const ANIMS=[
+ {id:'clatter',name:'Clatter',kind:'raccoon drummer',side:'left',col:'#8a929e'},
+ {id:'lumen',name:'Madame Lumen',kind:'moth singer',side:'right',col:'#c9b27a'},
+ {id:'gnash',name:'Gnash',kind:'gator on banjo',side:'left',col:'#5f8a4a'}];
+const ROOMS=['Show stage','Dining hall','Prize arcade','Back hallway','AT YOUR DOOR'];
+const NIGHT_T=[[1,2,10],[1,2,10,5,11],[1,2,10,5,11,3,4],[1,2,10,5,11,3,4,9,6],[1,2,10,5,11,3,4,9,6,8,7],[1,2,3,4,5,6,7,8,9,10,11,12]];
+const NOTES=[
+ 'Welcome to the night shift at Pip\'s Pizza Palace! After midnight the animatronics get a little... wandery. Every right answer flashes your light and scares the closest one back. If one reaches your door, answer fast to slam it shut. Watch your power. Survive until 6 AM.',
+ 'Good job last night. Madame Lumen has started humming in the dark again. She likes the right hallway. Keep your answers quick.',
+ 'Somebody left the prize arcade on and Gnash keeps playing the claw machine. He gets grumpy when he loses. Stay sharp.',
+ 'The fuse box is acting up, so your power drains a little faster tonight. Wrong answers cost extra power. Think before you tap.',
+ 'All three of them were moving during the day. That never happens. Lock in your sevens and eights. You will need them.',
+ 'Final night. Every table, every animatronic, every hallway. Make it to 6 AM and you are Employee of the Month.'];
+function animSvg(id,glow,size,cls){const g=glow?'#ff4757':'#fff6c8',G={
+ clatter:`<path d="M20 100V66q0-10 10-10h40q10 0 10 10v34z" fill="#6b7380"/><path d="M30 64h40v36H30z" fill="#59606b"/><circle cx="40" cy="78" r="2" fill="#3a3f48"/><circle cx="60" cy="78" r="2" fill="#3a3f48"/>
+  <circle cx="26" cy="18" r="10" fill="#6b7380"/><circle cx="74" cy="18" r="10" fill="#6b7380"/><circle cx="26" cy="18" r="5" fill="#3a3f48"/><circle cx="74" cy="18" r="5" fill="#3a3f48"/>
+  <ellipse cx="50" cy="40" rx="29" ry="24" fill="#8a929e"/><path d="M21 37Q50 25 79 37L77 50Q50 41 23 50z" fill="#18191e"/><circle cx="38" cy="42" r="6" fill="#18191e"/><circle cx="62" cy="42" r="6" fill="#18191e"/>
+  <circle cx="38" cy="42" r="3" fill="${g}"/><circle cx="62" cy="42" r="3" fill="${g}"/><ellipse cx="50" cy="55" rx="10" ry="7" fill="#c9ccd2"/><circle cx="50" cy="51" r="3" fill="#18191e"/><path d="M41 59h18v5H41z" fill="#f4f1ea"/><path d="M45 59v5M50 59v5M55 59v5" stroke="#8a929e"/><path d="M82 70l14-20" stroke="#c9a77a" stroke-width="4" stroke-linecap="round"/>`,
+ lumen:`<g opacity=".95"><ellipse cx="26" cy="52" rx="24" ry="34" fill="#7a5a3a" transform="rotate(-18 26 52)"/><ellipse cx="74" cy="52" rx="24" ry="34" fill="#7a5a3a" transform="rotate(18 74 52)"/>
+  <circle cx="22" cy="46" r="8" fill="#c9b27a"/><circle cx="22" cy="46" r="4" fill="#2a1a10"/><circle cx="78" cy="46" r="8" fill="#c9b27a"/><circle cx="78" cy="46" r="4" fill="#2a1a10"/></g>
+  <ellipse cx="50" cy="70" rx="13" ry="28" fill="#c9b27a"/><path d="M40 62h20M40 70h20M41 78h18" stroke="#a8925a" stroke-width="2"/><circle cx="50" cy="32" r="15" fill="#d8c48e"/>
+  <path d="M44 19q-6-14-16-12M56 19q6-14 16-12" stroke="#5a4630" stroke-width="2.5" fill="none"/><ellipse cx="43" cy="31" rx="5" ry="7" fill="#18191e"/><ellipse cx="57" cy="31" rx="5" ry="7" fill="#18191e"/>
+  <ellipse cx="43" cy="31" rx="3" ry="4" fill="${glow?'#ffe14d':'#fff6c8'}"/><ellipse cx="57" cy="31" rx="3" ry="4" fill="${glow?'#ffe14d':'#fff6c8'}"/><path d="M45 41q5 3 10 0" stroke="#5a4630" stroke-width="2" fill="none"/>`,
+ gnash:`<path d="M18 100V70q0-8 8-8h48q8 0 8 8v30z" fill="#4a6e3a"/><path d="M44 62l6 8 6-8z" fill="#b5303a"/><path d="M36 62l14 6-14 6zM64 62l-14 6 14 6z" fill="#b5303a"/>
+  <path d="M22 44q0-26 28-26t28 26v6H22z" fill="#5f8a4a"/><circle cx="36" cy="22" r="9" fill="#5f8a4a"/><circle cx="64" cy="22" r="9" fill="#5f8a4a"/><circle cx="36" cy="22" r="5" fill="#18191e"/><circle cx="64" cy="22" r="5" fill="#18191e"/>
+  <ellipse cx="36" cy="22" rx="1.6" ry="4" fill="${glow?'#c6ff4d':'#fff6c8'}"/><ellipse cx="64" cy="22" rx="1.6" ry="4" fill="${glow?'#c6ff4d':'#fff6c8'}"/>
+  <path d="M18 46h64v10q-32 8-64 0z" fill="#6f9a56"/><path d="M20 50l5 6 5-6 5 6 5-6 5 6 5-6 5 6 5-6 5 6 5-6 5 6 5-6" stroke="#f4f1ea" stroke-width="2.5" fill="none"/><circle cx="44" cy="40" r="1.5" fill="#18191e"/><circle cx="56" cy="40" r="1.5" fill="#18191e"/>`}[id];
+ if(!G){const a=findAnim(id);return customSvg(a&&a.custom,glow,size,cls)}
+ return `<svg class="${cls||''}" width="${size}" height="${size}" viewBox="0 0 100 100" aria-hidden="true">${G}</svg>`}
+const nightNeed=n=>6*(2+Math.ceil(n/2));
+const scareOf=p=>p.scare==null?1:p.scare;
+function startNight(p,n){const ts=NIGHT_T[n-1],o=new Set();ts.forEach(x=>{for(let k=1;k<=12;k++)o.add(fk(x,k))});
+ play={c:{title:'Night '+n,free:[...o],night:n,y:1},retry:[],last:null,streak:0,hearts:3,ns:{n,done:0,need:nightNeed(n),power:100,anim:roster(p).map(a=>({id:a.id,pos:0})),over:false}};go('nightnote')}
+function vNightNote(){const p=P(),n=play.ns.n;return header(p)+`<div class="card nightcard pop"><p class="muted">Night ${n} of 6</p><h2>A note from the manager</h2><p class="note">${esc(NOTES[n-1])}</p>
+ <div class="row" style="justify-content:center;gap:4px;margin:10px 0">${roster(p).map(a=>`<div style="text-align:center">${animSvg(a.id,false,70)}<small style="display:block">${esc(a.name)}</small></div>`).join('')}</div>
+ <div class="row"><button data-act="nstart">Start the shift</button>${canRead()?`<button class="ghost" data-act="read">${reading?'Stop reading':'Read to me'}</button>`:''}<button class="ghost" data-act="map">Back</button></div></div>`}
+const clockTxt=ns=>{const h=Math.min(6,Math.floor(ns.done/ns.need*6));return (h===0?12:h)+' AM'};
+function camsHtml(){const ns=play.ns;return roster(P()).map(a=>{const s=ns.anim.find(x=>x.id===a.id),near=s.pos>=4,mid=s.pos===3;
+ return `<div class="cam ${near?'red':mid?'warn':''}"><span class="lbl">CAM ${s.pos+1} · ${ROOMS[s.pos]}</span>${animSvg(a.id,s.pos>=3,30+s.pos*7)}<small>${esc(a.name)}</small></div>`}).join('')}
+function officeSvg(){const ns=play.ns,at=ns.anim.filter(a=>a.pos>=4).map(a=>findAnim(a.id)),L=at.find(a=>a.side==='left'),R=at.find(a=>a.side==='right'),low=ns.power<20;
+ const eyes=(x,a)=>a?`<circle cx="${x-7}" cy="70" r="3" fill="${a.custom?a.custom.glow:a.id==='gnash'?'#c6ff4d':a.id==='lumen'?'#ffe14d':'#ff4757'}"/><circle cx="${x+7}" cy="70" r="3" fill="${a.custom?a.custom.glow:a.id==='gnash'?'#c6ff4d':a.id==='lumen'?'#ffe14d':'#ff4757'}"/>`:'';
+ return `<svg class="office ${low?'flick':''}" viewBox="0 0 320 150" role="img" aria-label="Your security office"><rect width="320" height="150" fill="#16151c"/><rect y="118" width="320" height="32" fill="#0c0b10"/>
+ <path d="M10 118V34h50v84z" fill="${L?'#2a0d12':'#0a0a0e'}" stroke="${L?'#ff4757':'#2c2b36'}" stroke-width="3"/>${eyes(35,L)}<path d="M260 118V34h50v84z" fill="${R?'#2a0d12':'#0a0a0e'}" stroke="${R?'#ff4757':'#2c2b36'}" stroke-width="3"/>${eyes(285,R)}
+ <rect x="110" y="20" width="56" height="40" fill="#e8e2d4" transform="rotate(-4 138 40)"/><path d="M128 50l10-22 10 22z" fill="#f2c14e" transform="rotate(-4 138 40)"/><circle cx="135" cy="42" r="2" fill="#b5303a"/><circle cx="141" cy="46" r="2" fill="#b5303a"/><text x="138" y="58" font-size="6" text-anchor="middle" font-family="sans-serif" fill="#b5303a" transform="rotate(-4 138 40)">PIP SAYS SMILE!</text>
+ <rect x="80" y="96" width="160" height="24" fill="#3a2a20"/><rect x="176" y="66" width="44" height="32" rx="3" fill="#1d2a24" stroke="#3a4a40" stroke-width="2"/><rect x="180" y="70" width="36" height="22" fill="${low?'#2a3a30':'#3c8a5a'}" opacity=".7"/>
+ <circle cx="112" cy="84" r="12" fill="none" stroke="#5a5a66" stroke-width="2"/><path d="M112 72v24M100 84h24" stroke="#5a5a66" stroke-width="2"/><rect x="109" y="94" width="6" height="4" fill="#5a5a66"/>
+ <ellipse cx="160" cy="0" rx="80" ry="34" fill="#fff6c8" opacity="${low?.03:.07}"/></svg>`}
+function vNightPlay(p,q,fb){const ns=play.ns,door=q.door?findAnim(q.door):null;
+ return `<div class="nightbar"><b class="clock" id="nclock">${clockTxt(ns)}</b><span>Night ${ns.n}</span><span class="pw ${ns.power<25?'low':''}" id="npw">Power ${Math.ceil(ns.power)}%</span></div><div class="pbar"><i id="npb" style="width:${ns.power}%"></i></div>
+ ${officeSvg()}<div class="cams" id="ncams">${camsHtml()}</div>
+ ${door&&!fb?`<div class="alarm" role="alert"><b>${esc(door.name)} is at the ${door.side.toUpperCase()} door!</b> Answer fast to slam it shut.<div class="candle"><i style="width:${play.time/play.tmax*100}%"></i></div></div>`:''}`}
+function armDoor(at,fresh){const q=play.q;q.door=at.id;q.type='std';q.ans=q.a*q.b;delete q.opts;delete q.hide;if(!fresh){play.input='';play.start=Date.now()}
+ clearInterval(play.tick);play.tmax=Math.max(5,9-Math.floor(play.ns.n/2));play.time=play.tmax;
+ play.tick=setInterval(()=>{play.time-=.25;const el=$('.alarm .candle i');if(el)el.style.width=Math.max(0,play.time/play.tmax*100)+'%';if(play.time<=0){clearInterval(play.tick);answer(true)}},250);if(!fresh){sfx('step');draw()}}
+function nightTick(){if(view!=='play'||!play||!play.ns||play.ns.over)return;if(play.fb&&!play.fb.ok)return;const ns=play.ns,p=P();
+ ns.power-=.22+.05*ns.n;const pr=(.085+.012*ns.n)*3/ns.anim.length;let stepped=false;
+ ns.anim.forEach(a=>{if(a.pos<4&&Math.random()<pr){a.pos++;if(a.pos>=3)stepped=true}});
+ if(stepped&&scareOf(p)>0)sfx('step');
+ if(ns.power<=0){ns.power=0;return nightLose(null)}
+ if(!play.fb&&play.q&&!play.q.door){const at=ns.anim.find(a=>a.pos>=4);if(at)return armDoor(at,false)}
+ const c=$('#ncams');if(c)c.innerHTML=camsHtml();const w=$('#npw');if(w){w.textContent=`Power ${Math.ceil(ns.power)}%`;w.classList.toggle('low',ns.power<25)}const b=$('#npb');if(b)b.style.width=ns.power+'%';
+ const o=$('.office');if(o)o.outerHTML=officeSvg()}
+function nightLose(who){const p=P(),ns=play.ns;if(ns.over)return;ns.over=true;clearInterval(play.tick);clearInterval(play.ntick);play.ntick=null;ns.who=who;
+ const lvl=scareOf(p);if(lvl===0){sfx('bad');return go('nightlost')}
+ const rs=roster(p),a=who||rs[Math.floor(Math.random()*rs.length)].id,el=$('#scare');ns.who=a;
+ el.innerHTML=`<div class="sc-in">${animSvg(a,true,320)}</div>`;el.className='on lvl'+lvl;if(p.snd)scream(lvl);
+ setTimeout(()=>{el.className='';el.innerHTML='';go('nightlost')},lvl===2?1500:1100)}
+function nightWin(){const p=P(),ns=play.ns;ns.over=true;clearInterval(play.ntick);play.ntick=null;norm2(p);const first=(p.nights||0)<ns.n;
+ p.nights=Math.max(p.nights||0,ns.n);p.gems+=first?20:5;play.nfirst=first;award(p,'night1');if(ns.n===6)award(p,'night6');save();sfx('chime');go('nightwon')}
+function vNightWon(){const p=P(),ns=play.ns;return header(p)+`<div class="card nightcard pop">${burst(['#ffb627','#fff6c8'])}<div class="six">6 AM</div><h2 style="text-align:center">You survived Night ${ns.n}!</h2>
+ <div class="row" style="justify-content:center">${wiz(p,'happy',90,'hop')}</div><p style="text-align:center">${ns.done} spells cast, ${Math.ceil(ns.power)}% power left. +${play.nfirst?20:5} gems.${ns.n===6&&play.nfirst?' You are Employee of the Month!':''}</p>
+ <div class="row" style="justify-content:center">${ns.n<6?`<button data-act="night" data-n="${ns.n+1}">Night ${ns.n+1}</button>`:''}<button class="ghost" data-act="map">Back to the map</button></div></div>`}
+function vNightLost(){const p=P(),ns=play.ns,a=ns.who&&findAnim(ns.who);const cozy=scareOf(p)===0;
+ return header(p)+`<div class="card nightcard"><h2>${ns.power<=0?'The power ran out!':cozy?esc(a.name)+' wandered into your office!':esc(a.name)+' got you!'}</h2>
+ <div class="row" style="flex-wrap:nowrap">${a?animSvg(a.id,!cozy,90):''}${wiz(p,'sad',80,'')}</div>
+ <p>${cozy?`${esc(a?a.name:'Someone')} just wanted a slice of pizza. Shift over!`:'Shift over.'} You made it to ${clockTxt(ns)}. Every spell you cast still counts toward your times tables.</p>
+ <div class="row"><button data-act="night" data-n="${ns.n}">Try Night ${ns.n} again</button><button class="ghost" data-act="map">Back to map</button></div></div>`}
+function vNightMap(p){const done=p.nights||0;return `<div class="year">Pip's Pizza Palace: night security</div><div class="path">${[1,2,3,4,5,6].map(n=>{const lock=n>done+1,ok=n<=done,cur=n===done+1;
+ return `<button class="node ${ok?'done':''} ${cur?'cur':''} ${lock?'lock':''}" data-act="${lock?'':'night'}" data-n="${n}" ${lock?'aria-disabled="true"':''}><span class="dot"><span>${n}</span></span><span>Night ${n}<small>Tables ${NIGHT_T[n-1].length===12?'1 to 12':NIGHT_T[n-1].join(', ')}</small></span>
+ ${cur?`<span class="mapav">${avatar(pav(p),house(p).c,'idle',38)}</span>`:`<span class="muted">${lock?'Locked':ok?'Replay':'Go'}</span>`}</button>`}).join('')}</div>`}
+function scream(lvl){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();const t0=AC.currentTime,dur=lvl===2?1.2:.6,vol=lvl===2?.35:.14;
+ const o=AC.createOscillator(),g=AC.createGain();o.type='sawtooth';o.frequency.setValueAtTime(lvl===2?700:420,t0);o.frequency.exponentialRampToValueAtTime(lvl===2?140:160,t0+dur);g.gain.setValueAtTime(vol,t0);g.gain.exponentialRampToValueAtTime(.0001,t0+dur);o.connect(g);g.connect(AC.destination);o.start(t0);o.stop(t0+dur);
+ if(lvl===2){const len=AC.sampleRate*dur,buf=AC.createBuffer(1,len,AC.sampleRate),d=buf.getChannelData(0);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*(1-i/len);const s=AC.createBufferSource(),ng=AC.createGain();s.buffer=buf;ng.gain.value=.22;s.connect(ng);ng.connect(AC.destination);s.start(t0)}}catch(e){}}
+
+// ---------- Animatronic workshop (original animals only) ----------
+const CA={animal:['owl','shark','gorilla','dragon','octopus','penguin'],col:['#c94a4a','#3b7ddd','#7a5ac9','#3c9a8a','#e08a2a','#c9c9d4'],glow:['#ff4757','#ffe14d','#c6ff4d','#5ad8ff','#d77aff'],inst:['none','drum','guitar','microphone','trumpet'],side:['left','right']};
+const shade=(h,a)=>'#'+[1,3,5].map(i=>Math.max(0,Math.min(255,parseInt(h.substr(i,2),16)+a)).toString(16).padStart(2,'0')).join('');
+function customSvg(c,glow,size,cls){if(!c)return '';const col=c.col,dk=shade(col,-45),lt=shade(col,60),g=glow?c.glow:'#fff6c8';
+ const eyes=(x1,x2,y,r)=>`<circle cx="${x1}" cy="${y}" r="${r}" fill="#18191e"/><circle cx="${x2}" cy="${y}" r="${r}" fill="#18191e"/><circle cx="${x1}" cy="${y}" r="${r*.5}" fill="${g}"/><circle cx="${x2}" cy="${y}" r="${r*.5}" fill="${g}"/>`;
+ const body=`<path d="M24 100V68q0-10 10-10h32q10 0 10 10v32z" fill="${dk}"/><path d="M34 66h32v34H34z" fill="${col}"/><circle cx="40" cy="80" r="2" fill="${shade(col,-80)}"/><circle cx="60" cy="80" r="2" fill="${shade(col,-80)}"/>`;
+ const H={
+  owl:`<path d="M26 22l6 12 8-8zM74 22l-6 12-8-8z" fill="${dk}"/><ellipse cx="50" cy="38" rx="27" ry="23" fill="${col}"/><circle cx="39" cy="38" r="10" fill="${lt}"/><circle cx="61" cy="38" r="10" fill="${lt}"/>${eyes(39,61,38,6)}<path d="M46 46l4 8 4-8z" fill="#e08a2a"/>`,
+  shark:`<path d="M44 18l10-14 6 16z" fill="${dk}"/><path d="M18 46Q20 16 50 14Q80 16 82 44Q70 58 50 58Q30 58 18 46z" fill="${col}"/><path d="M28 48Q50 58 72 48Q62 56 50 56Q38 56 28 48z" fill="${lt}"/>${eyes(32,68,34,4.5)}<path d="M30 46l4 5 4-5 4 5 4-5 4 5 4-5 4 5 4-5 4 5 4-5" stroke="#f4f1ea" stroke-width="2.5" fill="none"/><path d="M76 30l5 2M76 35l5 1" stroke="${dk}" stroke-width="2"/>`,
+  gorilla:`<circle cx="22" cy="40" r="7" fill="${dk}"/><circle cx="78" cy="40" r="7" fill="${dk}"/><ellipse cx="50" cy="36" rx="27" ry="25" fill="${dk}"/><ellipse cx="50" cy="44" rx="19" ry="15" fill="${lt}"/><path d="M28 32q22-10 44 0v5q-22-8-44 0z" fill="${shade(col,-70)}"/>${eyes(41,59,38,4)}<circle cx="46" cy="47" r="1.8" fill="#18191e"/><circle cx="54" cy="47" r="1.8" fill="#18191e"/><path d="M42 54q8 4 16 0" stroke="#18191e" stroke-width="2" fill="none"/>`,
+  dragon:`<path d="M14 70l14-16 6 18zM86 70l-14-16-6 18z" fill="${dk}"/><path d="M32 22q-8-14-2-20q4 10 12 14zM68 22q8-14 2-20q-4 10-12 14z" fill="#f2c14e"/><ellipse cx="50" cy="36" rx="24" ry="21" fill="${col}"/><ellipse cx="50" cy="50" rx="16" ry="10" fill="${lt}"/><circle cx="45" cy="48" r="1.8" fill="#18191e"/><circle cx="55" cy="48" r="1.8" fill="#18191e"/>
+   <ellipse cx="40" cy="32" rx="5" ry="6" fill="#18191e"/><ellipse cx="60" cy="32" rx="5" ry="6" fill="#18191e"/><ellipse cx="40" cy="32" rx="1.6" ry="5" fill="${g}"/><ellipse cx="60" cy="32" rx="1.6" ry="5" fill="${g}"/><path d="M38 56l3 3 3-3 3 3 3-3 3 3 3-3 3 3 3-3" stroke="#f4f1ea" stroke-width="2" fill="none"/>`,
+  octopus:`${[18,30,42,58,70,82].map((x,i)=>`<path d="M${x} 60q${i<3?-10:10} 18 ${i<3?2:-2} 34" stroke="${col}" stroke-width="7" fill="none" stroke-linecap="round"/>`).join('')}<ellipse cx="50" cy="34" rx="29" ry="27" fill="${col}"/><circle cx="36" cy="22" r="3" fill="${lt}"/><circle cx="62" cy="16" r="2.5" fill="${lt}"/>${eyes(39,61,40,7)}<path d="M44 52q6 4 12 0" stroke="${shade(col,-80)}" stroke-width="2.5" fill="none"/>`,
+  penguin:`<path d="M20 70q-6 10-2 22l10-6zM80 70q6 10 2 22l-10-6z" fill="${dk}"/><ellipse cx="50" cy="38" rx="26" ry="24" fill="${dk}"/><path d="M30 42q0-16 20-16t20 16q0 14-20 16t-20-16z" fill="#f4f1ea"/>${eyes(41,59,38,4.5)}<path d="M44 46h12l-6 8z" fill="#e08a2a"/>`};
+ const I={none:'',drum:`<ellipse cx="78" cy="88" rx="14" ry="6" fill="#d8d0c0"/><path d="M64 88v10q14 6 28 0V88" fill="#b5303a"/><path d="M70 72l10 12" stroke="#c9a77a" stroke-width="3" stroke-linecap="round"/>`,
+  guitar:`<path d="M58 70l30-30" stroke="#5a3a20" stroke-width="4"/><ellipse cx="60" cy="80" rx="12" ry="14" fill="#a0522d" transform="rotate(-40 60 80)"/><circle cx="60" cy="80" r="3.5" fill="#2a1a10"/>`,
+  microphone:`<path d="M80 100V66" stroke="#5a5a66" stroke-width="3"/><path d="M80 66l-8-6" stroke="#5a5a66" stroke-width="3"/><circle cx="70" cy="58" r="5" fill="#9aa0a8"/>`,
+  trumpet:`<path d="M60 70h20l14-8v20l-14-8H60z" fill="#f2c14e" stroke="#a87f1d"/><rect x="66" y="66" width="3" height="5" fill="#a87f1d"/><rect x="72" y="66" width="3" height="5" fill="#a87f1d"/>`}[c.inst||'none'];
+ return `<svg class="${cls||''}" width="${size}" height="${size}" viewBox="0 0 100 100" aria-hidden="true">${c.animal==='octopus'?'':body}${H[c.animal]||H.owl}${I}</svg>`}
+const roster=p=>ANIMS.concat((p&&p.customs||[]).map(c=>({id:c.id,name:c.name,side:c.side,custom:c})));
+const findAnim=id=>roster(P()).find(a=>a.id===id);
+let wdraft=null;
+const newCustom=()=>({id:'c_'+Date.now().toString(36),name:'',animal:'owl',col:CA.col[0],glow:CA.glow[0],inst:'drum',side:'right'});
+function vWorkshop(){const p=P(),cs=p.customs||[];if(!wdraft)wdraft=null;
+ const sw=(k,lab)=>`<b>${lab}</b><div class="sws">${CA[k].map(v=>`<button class="sw ${wdraft[k]===v?'on':''}" style="background:${v}" data-act="wk" data-k="${k}" data-v="${v}" aria-label="${lab} ${v}"></button>`).join('')}</div>`;
+ const ch=(k,lab)=>`<b>${lab}</b><div class="sws">${CA[k].map(v=>`<button class="chip ${wdraft[k]===v?'on':''}" data-act="wk" data-k="${k}" data-v="${v}">${v==='none'?'None':v}</button>`).join('')}</div>`;
+ return header(p)+`<div class="top"><h2 style="margin:0">Animatronic workshop</h2><button class="ghost" data-act="map">Map</button></div>
+ <p>Invent up to 3 animatronics of your own. They join Clatter, Madame Lumen and Gnash on the night shift.</p>
+ ${cs.length?`<div class="cams" style="margin-bottom:14px">${cs.map(c=>`<div class="cam">${customSvg(c,true,64)}<small><b>${esc(c.name)}</b><br>${c.side} door</small><div class="row" style="justify-content:center;gap:4px;margin-top:4px"><button class="ghost" style="min-height:34px;padding:2px 10px;font-size:13px" data-act="wedit" data-id="${c.id}">Edit</button><button class="ghost" style="min-height:34px;padding:2px 10px;font-size:13px" data-act="wdel" data-id="${c.id}">Scrap</button></div></div>`).join('')}</div>`:''}
+ ${wdraft?`<div class="card"><div class="build"><div class="pv" style="background:#14141a">${customSvg(wdraft,true,150)}<small style="color:#cfd3d8">${esc(wdraft.name||'Name me!')}</small></div>
+  <div class="opts"><b>Name</b><input id="wname" type="text" maxlength="14" value="${esc(wdraft.name)}" placeholder="Name your animatronic" style="margin:6px 0 10px">
+  ${ch('animal','Animal')}${sw('col','Colour')}${sw('glow','Eye glow')}${ch('inst','Instrument')}${ch('side','Which door it sneaks to')}</div></div>
+  <div class="row" style="margin-top:10px"><button data-act="wsave">Switch it on</button><button class="ghost" data-act="wcancel">Cancel</button></div><p class="muted" id="wmsg" style="color:#a3242c"></p></div>`
+ :cs.length<3?`<button data-act="wnew">Invent a new animatronic</button>`:'<p class="muted">Your workshop is full. Scrap one to build another.</p>'}`}
+
+// ---------- FRENCH TEST PREP: -IR verbs, present tense ----------
+const FRV=[['finir','to finish','le projet'],['choisir','to choose','un livre'],['réussir','to succeed / pass','le test'],['remplir','to fill','la bouteille'],
+ ['grandir','to grow (up)','très vite'],['rougir','to blush / turn red','devant la classe'],['punir','to punish','le dragon'],['obéir','to obey','aux règles'],
+ ['réfléchir','to think / reflect','avant de répondre'],['bâtir','to build','un château'],['applaudir','to clap / applaud','à la fin du spectacle'],['nourrir','to feed','le hibou'],
+ ['atterrir','to land','à Toronto'],['ralentir','to slow down','dans la rue'],['vieillir','to grow old','lentement']];
+const FRI=[['partir','to leave','à huit heures'],['sortir','to go out','avec des amis'],['dormir','to sleep','dans la tour']];
+const FRP=[['je',0],['tu',1],['il',2],['elle',2],['on',2],['nous',3],['vous',4],['ils',5],['elles',5]];
+const FRE=['is','is','it','issons','issez','issent'],FREI=['s','s','t','ons','ez','ent'],FRS=['je','tu','il / elle / on','nous','vous','ils / elles'];
+const FRSUBJ=[['Les élèves',5],['Marie',2],['Le professeur',2],['Mon frère et moi',3],['Toi et ton ami',4],['Mes amies',5],['Les sorciers',5],['Mon chat',2]];
+const ENGP={je:'I',tu:'You (one friend)',il:'He',elle:'She',nous:'We',vous:'You (a group)',ils:'They (boys)',elles:'They (girls)'};
+const frIrr=inf=>FRI.some(v=>v[0]===inf);
+const conj=(inf,s)=>frIrr(inf)?(s<3?inf.slice(0,-3):inf.slice(0,-2))+FREI[s]:inf.slice(0,-2)+FRE[s];
+const vowel=w=>/^[aeiouéèêâîôûh]/i.test(w);
+const withP=(pr,f)=>pr==='je'&&vowel(f)?"j'"+f:pr+' '+f;
+const cap=s=>s[0].toUpperCase()+s.slice(1);
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'');
+const frN=s=>String(s||'').toLowerCase().replace(/[’`]/g,"'").replace(/\s+/g,' ').trim();
+const nextMon=()=>{const d=new Date();d.setDate(d.getDate()+((8-d.getDay())%7||7));return dkey(d)};
+function FR(p){p.fr=p.fr||{};const f=p.fr;f.k=f.k||{};f.tests=f.tests||[];if(!f.date)f.date=nextMon();return f}
+const frVerbs=p=>FR(p).irr?FRV.concat(FRI):FRV;
+const frLv=(f,k)=>(f.k[k]||{b:0}).b;
+function wpick(arr,w){let r=Math.random()*w.reduce((a,b)=>a+b,0);for(let i=0;i<arr.length;i++){r-=w[i];if(r<=0)return arr[i]}return arr[arr.length-1]}
+function sayFr(t){try{if(TTS){TTS.speak(t,{voice:'airy',rate:.85,language:'fr'}).catch(()=>{})}else if(window.speechSynthesis){const u=new SpeechSynthesisUtterance(t);u.lang='fr-CA';u.rate=.85;const v=speechSynthesis.getVoices().find(x=>/^fr/i.test(x.lang));if(v)u.voice=v;speechSynthesis.cancel();speechSynthesis.speak(u)}}catch(e){}}
+function frQ(p,type,force){const f=FR(p),vs=frVerbs(p);
+ let v=force?(vs.find(x=>x[0]===force.inf)||vs[0]):wpick(vs,vs.map(x=>(6-frLv(f,'v'+x[0]))**2+1));
+ let s=force?force.s:wpick([0,1,2,3,4,5],[0,1,2,3,4,5].map(i=>(6-frLv(f,'s'+i))**2+1));
+ type=type||rnd(['sent','sent','subj','subj','end','pro','mean','eng']);
+ const inf=v[0];if(type==='end'&&frIrr(inf))type='sent';if(type==='pro'&&vowel(inf))type='sent';
+ let subj=null;if(type==='subj'){const sj=force?FRSUBJ.filter(x=>x[1]===s):FRSUBJ;const pick=rnd(sj.length?sj:FRSUBJ);if(pick[1]!==s&&!sj.length)type='sent';else{subj=pick[0];s=pick[1]}}
+ let prs=FRP.filter(x=>x[1]===s);if(type==='eng')prs=prs.filter(x=>x[0]!=='on');const pr=rnd(prs)[0],form=conj(inf,s);
+ const q={type,inf,s,pr,form,mean:v[1],subj,full:subj?subj+' '+form:withP(pr,form),ans:form};
+ if(type==='sent')q.text=`${pr==='je'&&vowel(form)?"J'":cap(pr)+' '}____ ${v[2]}.`;
+ else if(type==='subj')q.text=`${subj} ____ ${v[2]}.`;
+ else if(type==='end'){q.text=withP(pr,inf.slice(0,-2)+'___');q.ans=FRE[s];q.opts=shuffle(['is','it','issons','issez','issent']).map(x=>[x,'-'+x])}
+ else if(type==='pro'){const wrong=shuffle(FRP.filter(x=>conj(inf,x[1])!==form).map(x=>x[0])).filter((x,i,a)=>a.indexOf(x)===i).slice(0,3);q.text='____ '+form;q.ans=pr;q.opts=shuffle([pr].concat(wrong)).map(x=>[x,x])}
+ else if(type==='mean'){const o=shuffle(vs.filter(x=>x[0]!==inf)).slice(0,3).map(x=>x[1]);q.text=`What does "${inf}" mean?`;q.ans=v[1];q.opts=shuffle([v[1]].concat(o)).map(x=>[x,x])}
+ else if(type==='eng'){let m=v[1].split(' / ')[0].replace(/^to /,'').split(' ');if(s===2){const w=m[0];m[0]=/(s|sh|ch|x|z|o)$/.test(w)?w+'es':/[^aeiou]y$/.test(w)?w.slice(0,-1)+'ies':w+'s'}q.text=`${ENGP[pr]} ${m.join(' ')}.`;q.ans=q.full}
+ return q}
+function frCheck(q,inp){let a=frN(inp);if(q.opts)return{ok:a===frN(q.ans)};
+ if(q.type!=='eng')a=a.replace(/^(je |j'|tu |il |elle |on |nous |vous |ils |elles )/,'').replace(/^(les élèves|marie|le professeur|mon frère et moi|toi et ton ami|mes amies|les sorciers|mon chat) /,'').replace(/[.!]$/,'');
+ else a=a.replace(/[.!]$/,'');
+ const want=frN(q.ans);if(a===want)return{ok:1};
+ if(strip(a)===strip(want))return{ok:1,note:'Careful with the accent: '+q.ans};
+ if(q.type==='eng'&&q.pr==='je'&&vowel(q.form)&&strip(a)===strip('je '+q.form))return{ok:1,note:"Before a vowel, je becomes j': "+q.ans};
+ return{ok:0}}
+function frWhy(q){if(q.type==='mean')return `${q.inf} means "${q.mean}".`;
+ const who=q.subj?`"${q.subj}" is like ${FRS[q.s]}, so `:`With ${FRS[q.s]}, `;
+ if(frIrr(q.inf))return who+`${q.inf} becomes ${q.form}. ${q.s<3?'For one person, drop the letter before -ir, then add -s, -s, -t.':'For more than one, chop -ir and add -ons, -ez, -ent.'}`;
+ return who+`chop -ir and add -${FRE[q.s]}: ${q.inf.slice(0,-2)} + ${FRE[q.s]} = ${q.form}.`}
+let fx=null;
+function frGo(v){go(v);const i=$('#frin');if(i)i.focus()}
+function fxStart(p,mode){fx={mode,n:0,total:mode==='test'?15:12,score:0,miss:[],q:null,fb:null,again:null,streak:0,plan:mode==='test'?shuffle(['sent','sent','sent','sent','subj','subj','subj','subj','end','end','pro','pro','mean','eng','eng']):null};fxNext(p)}
+function fxNext(p){fx.fb=null;let force=null;if(fx.again&&--fx.again.in<=0){force=fx.again;fx.again=null}
+ fx.q=frQ(p,fx.plan?fx.plan[fx.n]:force?'sent':null,force);frGo('frplay')}
+function fxAnswer(p,val){if(fx.fb)return;const q=fx.q,r=frCheck(q,val);if(!r.ok&&frN(val)===''){const i=$('#frin');if(i)i.focus();return}const f=FR(p);
+ const up=(k,ok)=>{const o=f.k[k]||(f.k[k]={b:0,c:0,w:0});if(ok){o.c++;o.b=Math.min(5,o.b+1)}else{o.w++;o.b=Math.max(0,o.b-2)}};
+ if(q.type!=='mean')up('s'+q.s,r.ok);up('v'+q.inf,r.ok);
+ if(r.ok){fx.score++;fx.streak++;p.gems+=1;p.points+=10}else{fx.streak=0;fx.miss.push({q,val:q.opts?(q.opts.find(o=>o[0]===val)||[0,val])[1]:val})}
+ fx.n++;
+ if(fx.mode==='test'){save();return fx.n>=fx.total?fxEnd(p):fxNext(p)}
+ fx.fb={ok:r.ok,note:r.note,msg:r.ok?rnd(['Parfait!','Bravo!','Excellent!','Super!'])+' +1 gem':'Pas tout à fait. Not quite.'};if(!r.ok)fx.again={inf:q.inf,s:q.s,in:2};
+ sfx(r.ok?'ok':'bad');save();frGo('frplay');
+ const tok=fx.fb;if(r.ok&&!r.note)setTimeout(()=>{if(view==='frplay'&&fx&&fx.fb===tok)fxAfter(p)},1000)}
+function fxAfter(p){if(!fx||!fx.fb)return;if(fx.n>=fx.total)return fxEnd(p);fxNext(p)}
+function fxEnd(p){const f=FR(p),pct=Math.round(fx.score/fx.total*100);fx.pct=pct;fx.fb=null;
+ if(fx.mode==='test'){f.tests.push({d:Date.now(),s:fx.score,of:fx.total});if(f.tests.length>30)f.tests.shift();if(pct>=80)p.gems+=10;if(pct>=90)award(p,'french')}else p.gems+=5;
+ save();sfx(pct>=80?'win':'chime');go('frdone')}
+function fxClick(a,t,p){if(a==='fxirr'||a==='fxdate')return;
+ if(a==='fx')go('fr');else if(a==='fxlearn')go('frlearn');else if(a==='fxprac')fxStart(p,'prac');else if(a==='fxtest')fxStart(p,'test');
+ else if(a==='fxsay')sayFr(t.dataset.t);
+ else if(a==='fxopt'&&fx&&!fx.fb)fxAnswer(p,t.dataset.v);
+ else if(a==='fxgo'&&fx&&!fx.fb){const i=$('#frin');fxAnswer(p,i?i.value:'')}
+ else if(a==='fxnext')fxAfter(p)}
+app.addEventListener('change',e=>{const a=e.target.dataset&&e.target.dataset.act,p=P();if(a==='fxirr'){FR(p).irr=e.target.checked;save();go('fr')}else if(a==='fxdate'&&e.target.value){FR(p).date=e.target.value;save();go('fr')}});
+document.addEventListener('keydown',e=>{if(view!=='frplay'||!fx||e.key!=='Enter')return;if(document.activeElement&&document.activeElement.tagName==='BUTTON')return;e.preventDefault();const p=P();
+ if(fx.fb)fxAfter(p);else if(!fx.q.opts){const i=$('#frin');fxAnswer(p,i?i.value:'')}});
+function vFr(){const p=P(),f=FR(p),dd=Math.round((new Date(f.date+'T00:00')-new Date(today()+'T00:00'))/DAY),best=f.tests.length?Math.max(...f.tests.map(t=>Math.round(t.s/t.of*100))):null;
+ const bars=FRS.map((s,i)=>`<div class="trow" style="grid-template-columns:104px minmax(0,1fr) 64px"><b>${s}</b><span class="bar2"><i style="width:${frLv(f,'s'+i)/5*100}%"></i></span><span>-${FRE[i]}</span></div>`).join('');
+ return header(p)+`<div class="top"><h2 style="margin:0">French charms: -IR verbs</h2><button class="ghost" data-act="map">Map</button></div>
+ <div class="card"><p class="muted" style="color:#7a6440;margin:0">${dd>1?`French test in ${dd} days`:dd===1?'French test is tomorrow!':dd===0?'French test is today. Bonne chance!':'Test day has passed. Set a new one below.'}</p>
+ <h3>Professor Lavigne's spell of the week</h3><p>Regular -IR verbs in the present tense. Learn the pattern once and it works on every verb: finir, choisir, réussir and more. Every right answer gives a gem.</p>
+ <div class="row"><button data-act="fxlearn">1. Learn the pattern</button><button data-act="fxprac">2. Practise</button><button data-act="fxtest">3. Mock test</button></div>
+ <h3 style="margin-top:18px">How strong is each ending?</h3>${bars}
+ <p class="muted" style="color:#7a6440">${best!=null?`Best mock test: ${best}%. ${f.tests.length} taken.`:'No mock tests yet. Try one after some practice.'}</p>
+ <h3 style="margin-top:18px">Settings</h3>
+ <label class="row" style="gap:8px;flex-wrap:nowrap"><input type="checkbox" data-act="fxirr" ${f.irr?'checked':''} style="width:22px;height:22px;flex:none"> Also practise tricky -IR verbs (partir, sortir, dormir)</label>
+ <label for="fxdate" class="muted" style="color:#5a4630;display:block;margin-top:10px">Test day</label><input id="fxdate" type="date" value="${f.date}" data-act="fxdate" class="sel" style="max-width:220px"></div>`}
+function vFrLearn(){const p=P(),vs=frVerbs(p),say=canRead();
+ return header(p)+`<div class="top"><h2 style="margin:0">The -IR spell</h2><button class="ghost" data-act="fx">Back</button></div><div class="card">
+ <p><b>Step 1:</b> Take the verb and chop off <b>-ir</b>. finir becomes <b>fin-</b>. That's the stem.</p><p><b>Step 2:</b> Add the ending that matches who is doing it:</p>
+ <table class="frt">${FRS.map((s,i)=>`<tr><td>${s}</td><td><b>fin</b><em>${FRE[i]}</em></td><td>${['I finish','you finish','he / she / we finish','we finish','you (all) finish','they finish'][i]}</td></tr>`).join('')}</table>
+ <div class="hint">Magic words: <b>is, is, it</b> for one person. For more than one, add the secret <b>-iss-</b>: iss-ons, iss-ez, iss-ent.</div>
+ <div class="hint">The -ent in ils finissent is silent. Finit and finis sound the same too: "fee-nee".</div>
+ <div class="hint">Je becomes j' before a vowel: j'obéis, j'applaudis, j'atterris.</div>
+ <div class="hint">Names count as pronouns: Marie = elle, Les élèves = ils, Mon frère et moi = nous, Toi et ton ami = vous.</div>
+ ${say?`<div class="row"><button class="ghost" data-act="fxsay" data-t="${esc(FRS.map((s,i)=>withP(s.split(' ')[0],'fin'+FRE[i])).join(', '))}">Hear it in French</button></div>`:''}
+ <h3 style="margin-top:16px">Your verbs</h3><ul class="list plain">${vs.map(v=>`<li><span><b>${v[0]}</b> · ${v[1]}</span>${say?`<button class="ghost" style="min-height:34px;padding:2px 10px;font-size:13px" data-act="fxsay" data-t="${esc(v[0])}">Hear</button>`:''}</li>`).join('')}</ul>
+ ${FR(p).irr?`<div class="hint"><b>Tricky ones:</b> partir, sortir and dormir drop the letter before -ir for one person: je pars, tu dors, il sort. For more than one they keep it: nous partons, vous dormez, ils sortent.</div>`:''}
+ <div class="row" style="margin-top:12px"><button data-act="fxprac">Start practising</button></div></div>`}
+const FXTAG={sent:'Fill in the verb',subj:'Fill in the verb',end:'Pick the ending',pro:'Who is doing it?',mean:'What does it mean?',eng:'Write it in French (pronoun + verb)'};
+function vFrPlay(){const p=P(),q=fx.q,fb=fx.fb,test=fx.mode==='test';
+ const mood=fb?(fb.ok?'happy':'sad'):'idle',msg=fb?fb.msg:test?'Take your time. No hints in the test!':fx.streak>=3?fx.streak+' in a row! Magnifique!':['Wand up, mon ami!','Allons-y!','You can do this!'][fx.n%3];
+ const top=`<div class="row" style="justify-content:space-between"><b>${test?'Mock test':'Practice'}</b><span class="muted" style="color:#7a6440">${fb?fx.n:fx.n+1} / ${fx.total}</span></div><div class="bar"><i style="width:${fx.n/fx.total*100}%"></i></div>
+ <div class="player">${wiz(p,mood,80,fb?(fb.ok?'hop':'hit'):'')}<div class="bubble ${fb?(fb.ok?'good':'bad'):''}" aria-live="polite">${esc(msg)}</div></div>`;
+ const sub=q.type==='sent'||q.type==='subj'||q.type==='eng'?`<p class="frh">(${esc(q.inf)}${q.type==='eng'?'':' · '+esc(q.mean)})</p>`:'<p class="frh">&nbsp;</p>';
+ const input=q.opts?`<div class="opts4 fr">${q.opts.map(([v,l])=>`<button data-act="fxopt" data-v="${esc(v)}">${esc(l)}</button>`).join('')}</div>`
+  :`<input id="frin" class="frin" type="text" lang="fr" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="type here"><div class="row" style="justify-content:center"><button class="cast" data-act="fxgo">Cast</button></div>`;
+ const body=fb?(fb.ok?`<div class="fb good" style="font-size:22px">${esc(q.type==='mean'?q.ans:q.full)}</div>${fb.note?`<div class="hint">${esc(fb.note)}</div>`:''}`
+  :`<div class="hint">${esc(q.type==='mean'?q.ans:q.full)}<br><span style="font-weight:500">${esc(frWhy(q))}</span></div>`)+
+  `<div class="row" style="justify-content:center">${fb.ok&&!fb.note?'':'<button data-act="fxnext">Got it</button>'}${canRead()&&q.type!=='mean'?`<button class="ghost" data-act="fxsay" data-t="${esc(q.full)}">Hear it</button>`:''}</div>`:input;
+ return header(p)+`<div class="card">${fb&&fb.ok?burst(sparkCols(p)):''}${top}<p class="qt">${FXTAG[q.type]}</p><div class="frq">${esc(q.text)}</div>${sub}${body}
+ <div class="row" style="justify-content:center;margin-top:14px"><button class="ghost" data-act="fx">Leave</button></div></div>`}
+function vFrDone(){const p=P(),t=fx.mode==='test',pct=fx.pct;
+ return header(p)+`<div class="card pop">${pct>=80?burst(sparkCols(p)):''}<h2>${t?(pct>=90?'Magnifique!':pct>=80?'Très bien!':pct>=60?'Getting there!':'Keep practising!'):'Practice done!'}</h2>
+ <div class="player">${wiz(p,pct>=60?'happy':'sad',90,pct>=80?'hop':'')}<div class="bubble ${pct>=80?'good':''}">${fx.score} / ${fx.total} (${pct}%)</div></div>
+ <p style="margin-top:12px">${t?(pct>=80?'+10 bonus gems! ':'Score 80% or more for 10 bonus gems. ')+(pct>=90?'':'90% earns the Bilingual wizard badge.'):'+5 bonus gems.'}</p>
+ ${fx.miss.length?`<h3>Review these</h3><ul class="list plain">${fx.miss.map(m=>`<li style="flex-wrap:wrap;gap:6px"><span>${esc(m.q.text)}</span><span><s style="color:#a3242c">${esc(m.val)}</s> <b style="color:#1f7a4a">${esc(m.q.type==='mean'?m.q.ans:m.q.full)}</b></span></li>`).join('')}</ul>`:'<p>No mistakes. Every spell landed!</p>'}
+ <div class="row" style="margin-top:12px"><button data-act="${t?'fxtest':'fxprac'}">${t?'Take another test':'Practise again'}</button><button class="ghost" data-act="${t?'fxprac':'fxtest'}">${t?'Practise':'Mock test'}</button><button class="ghost" data-act="fx">French home</button></div></div>`}
+function frReport(p){const f=FR(p);if(!f.tests.length&&!Object.keys(f.k).length)return '';
+ const hard=Object.entries(f.k).filter(([k,o])=>k[0]==='v'&&o.w>0).sort((a,b)=>b[1].w-a[1].w).slice(0,5).map(([k,o])=>`${k.slice(1)} (${o.w} missed)`);
+ return `<h3 style="margin-top:20px">French: -IR verbs</h3><p class="muted" style="color:#7a6440;margin-top:0">Test day ${esc(f.date)}. Right answers by ending: ${FRS.map((s,i)=>{const o=f.k['s'+i];return o?`${s} ${o.c}/${o.c+o.w}`:''}).filter(Boolean).join(', ')||'none yet'}.${hard.length?' Trickiest verbs: '+hard.join(', ')+'.':''}</p>
+ ${f.tests.length?`<ul class="list plain">${f.tests.slice(-5).reverse().map(t=>`<li><span>Mock test, ${new Date(t.d).toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'})}</span><span>${t.s}/${t.of} (${Math.round(t.s/t.of*100)}%)</span></li>`).join('')}</ul>`:'<p>No mock tests yet.</p>'}`}
 
 function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.profiles)state=s}catch(e){}}
 function save(){state.updated=Date.now();try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
@@ -608,7 +894,8 @@ function vStart(){const ps=Object.entries(state.profiles);
  <div class="card"><h3>${ps.length?'New wizard':'Create your wizard'}</h3><label for="nm" class="muted" style="color:#5a4630">Wizard name</label><input id="nm" type="text" maxlength="20" autocomplete="off">
  <p style="margin-top:14px"><b>Choose your house</b></p><div class="houses">${HOUSES.map(h=>`<button class="house ${newHouse===h.id?'on':''}" data-act="house" data-id="${h.id}">${crest(h,34)}<span>${h.name}<small>${h.t}</small></span></button>`).join('')}</div>
  <button data-act="create">Begin the quest</button></div>`}
-function vMap(){const p=P();let y=0,out=header(p)+(p.wand?`<p class="muted" style="margin:-6px 0 10px">Your wand: ${esc(p.wand.len)} inch ${esc(p.wand.wood)}, ${esc(p.wand.core)} core</p>`:`<div class="card" style="margin-bottom:14px"><b>You don't have a wand yet!</b> <button data-act="shop" style="margin-left:8px">Visit the wand shop</button></div>`)+p.rewards.filter(r=>r.earned&&!r.seen).map(r=>`<div class="reward"><b>Reward unlocked: ${esc(r.text)}!</b> Show this to a grown-up. <button class="ghost" style="color:var(--pink);margin-left:6px" data-act="rseen">Got it</button></div>`).join('')+(dueKeys(p).length?`<div class="card" style="margin-bottom:14px"><b>${dueKeys(p).length} spell${dueKeys(p).length>1?'s are':' is'} starting to fade.</b> <button data-act="refresh" style="margin-left:8px">Refresh spells</button></div>`:'')+'<div class="row" style="margin-bottom:6px"><button class="ghost" data-act="book">Spellbook</button><button class="ghost" data-act="market">Market</button><button class="ghost" data-act="album">Card album</button><button class="ghost" data-act="badges">Trophy room</button><button class="ghost" data-act="race">Broom race</button><button class="ghost" data-act="duel">Family duel</button><button class="ghost" data-act="free">Free practice</button><button class="ghost" data-act="dress">Wardrobe</button><button class="ghost" data-act="switch">Switch wizard</button><button class="ghost" data-act="report">For grown-ups</button></div>';
+function vMap(){const p=P();let y=0,out=header(p)+(p.theme==='night'?'':p.wand?`<p class="muted" style="margin:-6px 0 10px">Your wand: ${esc(p.wand.len)} inch ${esc(p.wand.wood)}, ${esc(p.wand.core)} core</p>`:`<div class="card" style="margin-bottom:14px"><b>You don't have a wand yet!</b> <button data-act="shop" style="margin-left:8px">Visit the wand shop</button></div>`)+p.rewards.filter(r=>r.earned&&!r.seen).map(r=>`<div class="reward"><b>Reward unlocked: ${esc(r.text)}!</b> Show this to a grown-up. <button class="ghost" style="color:var(--pink);margin-left:6px" data-act="rseen">Got it</button></div>`).join('')+(dueKeys(p).length?`<div class="card" style="margin-bottom:14px"><b>${dueKeys(p).length} spell${dueKeys(p).length>1?'s are':' is'} starting to fade.</b> <button data-act="refresh" style="margin-left:8px">Refresh spells</button></div>`:'')+'<div class="row" style="margin-bottom:6px"><button class="ghost" data-act="book">Spellbook</button><button class="ghost" data-act="market">Market</button><button class="ghost" data-act="album">Card album</button><button class="ghost" data-act="badges">Trophy room</button><button class="ghost" data-act="race">'+(p.theme==='night'?'Speed run':'Broom race')+'</button><button class="ghost" data-act="duel">Family duel</button><button class="ghost" data-act="free">Free practice</button><button data-act="fx">French: -IR verbs</button><button class="ghost" data-act="dress">Wardrobe</button>'+(p.theme==='night'?'<button class="ghost" data-act="workshop">Workshop</button>':'')+'<button class="ghost" data-act="switch">'+(p.theme==='night'?'Switch player':'Switch wizard')+'</button><button class="ghost" data-act="report">For grown-ups</button></div>';
+  if(p.theme==='night')return out+vNightMap(p);
  CH.forEach((c,i)=>{if(c.y!==y){y=c.y;out+=`<div class="year">${YEARS[y-1]}</div>`}
   const done=p.done.includes(i),lock=i>p.chapter,cur=i===p.chapter,pr=Math.round(chProg(p,c)*100);
   out+=`<button class="node ${done?'done':''} ${cur?'cur':''} ${lock?'lock':''} ${c.boss?'boss':''}" data-act="${lock?'':'ch'}" data-i="${i}" ${lock?'aria-disabled="true"':''}>
@@ -637,7 +924,7 @@ const WOODS=[['willow','#b08a5a'],['rowan','#8a5a32'],['ebony','#2a1a10'],['holl
 const CORES=[['griffin feather','#f2c14e'],['starlight thread','#bcd4ff'],['moonstone dust','#e8d8ff'],['storm cloud wisp','#7fd0ff'],['dragon scale','#ff6a3d'],['fire bird ember','#ff9a3d'],['owl down','#fff6c8']];
 const FLEX=['springy','sturdy','swishy','surprisingly bendy','firm but kind'];
 const MISFIRE=['A whole stack of wand boxes topples over!','Every candle in the shop goes out at once!','A puff of purple smoke makes you sneeze three times!','The vase on the counter turns into a very confused frog!','The window blinds snap shut with a bang!','A shower of soap bubbles fills the shop!'];
-const pav=p=>{const r=item(p.eq&&p.eq.robe);return Object.assign({},p.av,p.wand?{wood:p.wand.wc,core:p.wand.cc}:{},r?{robe:r.v}:{})};
+const pav=p=>{const r=item(p.eq&&p.eq.robe);return Object.assign({},p.av,p.wand?{wood:p.wand.wc,core:p.wand.cc}:{},r?{robe:r.v}:{},p.theme==='night'?{style:'guard'}:{})};
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
 let shop=null;
 function wandSvg(w,glow){return `<svg viewBox="0 0 220 60" width="100%" style="max-width:320px" aria-hidden="true">${glow?`<defs><radialGradient id="wg"><stop offset="0" stop-color="${w.cc}"/><stop offset="1" stop-color="${w.cc}" stop-opacity="0"/></radialGradient></defs><circle cx="196" cy="30" r="26" fill="url(#wg)"/>`:''}<path d="M10 24h52l140 4v4l-140 4H10q-6-6 0-12z" fill="${w.wc}" stroke="rgba(0,0,0,.35)" stroke-width="1.5"/><path d="M18 24v12M30 24v12M42 24v12" stroke="rgba(0,0,0,.3)" stroke-width="2"/><path d="M64 26l130 3" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/><circle cx="202" cy="30" r="${glow?5:2.5}" fill="${w.cc}"/></svg>`}
@@ -649,14 +936,14 @@ function vWand(){const p=P(),h=house(p).c;
  return header(p)+`<div class="card">${shopScene()}<h2>Oakshade's Wand Shop</h2><p>${shop.msg?`<b>${esc(shop.msg)}</b> "No, no, not that one," mutters Mr. Oakshade. "Try another."`:`A tall, dusty man peers at you over his glasses. "Ah, ${esc(p.name)}. Remember: you don't choose the wand. The wand chooses the wizard. Pick a box."`}</p>
  <div class="row" style="justify-content:center">${[0,1,2,3,4].map(i=>shop.used.includes(i)?'':`<button class="ghost ${shop.last===i?'hit':''}" style="width:110px;min-height:56px" data-act="try" data-i="${i}">Box ${i+1}</button>`).join('')}</div>
  <div class="player">${avatar(pav(p),h,shop.msg?'sad':'idle',90,shop.msg?'hit':'')}<div class="bubble ${shop.msg?'bad':''}">${shop.msg?'Whoops! That wasn\'t it.':'Which one will choose me?'}</div></div></div>`}
-function vBuild(){const h=HOUSES.find(x=>x.id===(buildNew?newHouse:P().house)).c;
+function vBuild(){const h=HOUSES.find(x=>x.id===(buildNew?newHouse:P().house)).c,guard=!buildNew&&P().theme==='night',pd=guard?Object.assign({},draft,{style:'guard'}):draft;
  const sw=(k)=>`<div class="sws">${AVO[k].map(v=>`<button class="sw ${draft[k]===v?'on':''}" style="background:${v}" data-act="av" data-k="${k}" data-v="${v}" aria-label="${k==='skin'?'Skin tone':'Hair colour'} ${v}"></button>`).join('')}</div>`;
- const ch=(k)=>`<b>${AVL[k]}</b><div class="sws">${AVO[k].map(v=>`<button class="chip ${draft[k]===v?'on':''}" data-act="av" data-k="${k}" data-v="${v}">${v==='none'?'None':v}</button>`).join('')}</div>`;
- return `<h2>Build your wizard</h2><div class="card"><div class="build"><div class="pv">${avatar(draft,h,draftMood,140,draftMood==='happy'?'hop':draftMood==='sad'?'hit':'')}<div class="row" style="justify-content:center"><button class="ghost" style="color:#f6eedc" data-act="mood" data-v="happy">Cheer</button><button class="ghost" style="color:#f6eedc" data-act="mood" data-v="sad">Oops</button></div></div>
+ const ch=(k)=>`<b>${k==='hat'&&guard?'Security cap':AVL[k]}</b><div class="sws">${AVO[k].map(v=>`<button class="chip ${draft[k]===v?'on':''}" data-act="av" data-k="${k}" data-v="${v}">${v==='none'?'None':v}</button>`).join('')}</div>`;
+ return `<h2>${guard?'Build your night guard':'Build your wizard'}</h2><div class="card"><div class="build"><div class="pv">${avatar(pd,h,draftMood,140,draftMood==='happy'?'hop':draftMood==='sad'?'hit':'')}<div class="row" style="justify-content:center"><button class="ghost" style="color:#f6eedc" data-act="mood" data-v="happy">Cheer</button><button class="ghost" style="color:#f6eedc" data-act="mood" data-v="sad">Oops</button></div></div>
  <div class="opts"><b>Skin tone</b>${sw('skin')}<b>Hair colour</b>${sw('hc')}${ch('hair')}${ch('glasses')}${ch('extra')}${ch('hat')}</div></div>
  <div class="row" style="margin-top:10px"><button data-act="done">${buildNew?'Next: find your wand':'Save my wizard'}</button>${buildNew?'':'<button class="ghost" data-act="map">Cancel</button>'}</div></div>`}
-function go(v){if(v!=='story'&&reading)stopRead();if(v!=='play'&&listening&&DIC)DIC.stop().catch(()=>{});view=v;if(v!=='play'&&play){clearInterval(play.tick);clearInterval(play.rtick);play.rtick=null}
- app.innerHTML=({start:vStart,build:vBuild,wand:vWand,market:vMarket,album:vAlbum,refreshed:vRefreshed,report:vReport,raced:vRaced,duelsetup:vDuelSetup,pass:vPass,duelend:vDuelEnd,cert:vCert,badges:vBadges,pin:vPin,map:vMap,story:vStory,play:vPlay,won:vWon,lost:vLost,book:vBook})[v]();
+function go(v){if(v!=='story'&&v!=='nightnote'&&reading)stopRead();document.body.classList.toggle('night',!!(state.active&&state.profiles[state.active]&&state.profiles[state.active].theme==='night'));if(v!=='play'&&listening&&DIC)DIC.stop().catch(()=>{});view=v;if(v!=='play'&&play){clearInterval(play.tick);clearInterval(play.rtick);play.rtick=null;clearInterval(play.ntick);play.ntick=null}
+ app.innerHTML=({start:vStart,build:vBuild,workshop:vWorkshop,nightnote:vNightNote,nightwon:vNightWon,nightlost:vNightLost,wand:vWand,market:vMarket,album:vAlbum,refreshed:vRefreshed,report:vReport,raced:vRaced,duelsetup:vDuelSetup,pass:vPass,duelend:vDuelEnd,cert:vCert,badges:vBadges,pin:vPin,map:vMap,story:vStory,play:vPlay,won:vWon,lost:vLost,book:vBook,fr:vFr,frlearn:vFrLearn,frplay:vFrPlay,frdone:vFrDone})[v]();
  const h=state.active&&P()?house(P()).c:'#f2c14e';document.documentElement.style.setProperty('--house',h);window.scrollTo&&v!=='play'&&window.scrollTo(0,0)}
 function draw(){go('play')}
 function startCh(i){const c=CH[i];play={c,retry:[],last:null,streak:0,hp:c.hp||0,hearts:3,time:15};go('story')}
@@ -664,6 +951,7 @@ function startCh(i){const c=CH[i];play={c,retry:[],last:null,streak:0,hp:c.hp||0
 app.addEventListener('change',e=>{if(e.target.dataset.act==='restore'&&e.target.files[0]){const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d||typeof d.profiles!=='object')throw 0;
   state=d;if(!state.profiles[state.active])state.active=Object.keys(state.profiles)[0]||null;save();manageMsg='Backup restored: '+Object.keys(state.profiles).length+' wizard(s).';pinOk=true;go(state.active?'report':'start')}catch(x){manageMsg='That file is not a Ravenmoor backup.';go('report')}};r.readAsText(e.target.files[0]);return}if(e.target.dataset.act==='adult'&&duelPick){state.profiles[duelPick].adult=e.target.checked;save()}});
 app.addEventListener('click',e=>{if(e.target.dataset&&e.target.dataset.act==='adult')return;const t=e.target.closest('[data-act]');if(!t)return;const a=t.dataset.act,p=P();
+ if(a.startsWith('fx')){fxClick(a,t,p);return}
  if(a==='house'){newHouse=t.dataset.id;const nm=$('#nm').value;go('start');$('#nm').value=nm}
  else if(a==='create'){const nm=$('#nm').value.trim();if(!nm){$('#nm').focus();return}if(!newHouse){newHouse='ember'}
   pendingName=nm.slice(0,20);buildNew=true;draft=Object.assign({},AVDEF);draftMood='idle';go('build')}
@@ -701,6 +989,18 @@ app.addEventListener('click',e=>{if(e.target.dataset&&e.target.dataset.act==='ad
  else if(a==='rdel'){p.rewards.splice(+t.dataset.i,1);save();go('report')}
  else if(a==='rseen'){p.rewards.forEach(r=>{if(r.earned)r.seen=1});save();go('map')}
  else if(a==='badges')go('badges');
+ else if(a==='workshop'){wdraft=null;go('workshop')}
+ else if(a==='wnew'){wdraft=newCustom();go('workshop')}
+ else if(a==='wedit'){wdraft=Object.assign({},(p.customs||[]).find(c=>c.id===t.dataset.id));go('workshop')}
+ else if(a==='wk'){const n=$('#wname');if(n)wdraft.name=n.value;wdraft[t.dataset.k]=t.dataset.v;go('workshop')}
+ else if(a==='wcancel'){wdraft=null;go('workshop')}
+ else if(a==='wsave'){const n=$('#wname').value.trim();if(!n){$('#wmsg').textContent='Give it a name first!';$('#wname').focus();return}wdraft.name=n.slice(0,14);p.customs=p.customs||[];
+  const i=p.customs.findIndex(c=>c.id===wdraft.id);if(i>=0)p.customs[i]=wdraft;else if(p.customs.length<3)p.customs.push(wdraft);wdraft=null;sfx('buy');save();go('workshop')}
+ else if(a==='wdel'){p.customs=(p.customs||[]).filter(c=>c.id!==t.dataset.id);save();go('workshop')}
+ else if(a==='theme'){p.theme=t.dataset.v;save();go('report')}
+ else if(a==='night')startNight(p,+t.dataset.n);
+ else if(a==='nstart')nextQ();
+ else if(a==='scare'){p.scare=+t.dataset.v;save();go('report')}
  else if(a==='bkup'){DL.save({filename:'ravenmoor-backup-'+today()+'.json',data:JSON.stringify(state)}).then(()=>{manageMsg='Backup saved.';go('report')}).catch(e=>{manageMsg=e&&e.code==='declined'?'Backup not saved.':'Could not save a backup here.';go('report')})}
  else if(a==='mren'){armed='ren:'+t.dataset.id;manageMsg='';go('report');const i=$('#rnm');if(i){i.focus();i.select()}}
  else if(a==='mrensave'){const v=$('#rnm').value.trim();if(v){state.profiles[t.dataset.id].name=v.slice(0,20);save();manageMsg='Renamed.'}armed=null;go('report')}
@@ -717,7 +1017,7 @@ app.addEventListener('click',e=>{if(e.target.dataset&&e.target.dataset.act==='ad
  else if(a==='dready')nextQ();
  else if(a==='opt'&&play&&!play.fb){play.input=t.dataset.v;answer(false)}
  else if(a==='mic')micClick();
- else if(a==='read'){const c=play.c;read(c.title+'. '+c.s.replace(/\{n\}/g,p.name).replace(/\{h\}/g,house(p).name))}
+ else if(a==='read'){const c=play.c;if(c.night)read(NOTES[c.night-1]);else read(c.title+'. '+c.s.replace(/\{n\}/g,p.name).replace(/\{h\}/g,house(p).name))}
  else if(a==='refresh'){const ks=dueKeys(p).sort((x,y)=>p.facts[x].b-p.facts[y].b).slice(0,15);play={c:{title:'Spell refresh',free:ks,refresh:1,y:1},retry:[],last:null,streak:0,hearts:3};nextQ()}});
 document.addEventListener('keydown',e=>{if(view!=='play'||!play||!play.q)return;const ty=play.q.type;
  if(!play.fb&&ty==='tf'&&/^[tf]$/i.test(e.key)){play.input=e.key.toUpperCase();answer(false);return}
